@@ -2,5 +2,7 @@
 <p align="center">
 Hybrid AI model for pegion pea leaf disease classification and prediction using machine learning
 </p>
-![Website Front Page](homepage.png)
+<p align="center">
+  <img src="homepage.png" alt="project homepage" width="800">
+</p>
 
