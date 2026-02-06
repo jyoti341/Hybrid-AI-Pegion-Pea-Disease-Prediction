@@ -15,5 +15,14 @@ The <b>Hybrid AI Model for Pigeon Pea Leaf Disease Classification and Prediction
 <p>
 Users can upload leaf images and get instant disease predictions along with useful insights for crop management.
 </p>
+<h2>✨ Key Features</h2>
+
+<ul>
+  <li><b>AI-based pigeon pea leaf disease classification</b></li>
+  <li><b>Image-based disease prediction using machine learning</b></li>
+  <li><b>Hybrid AI model for improved prediction accuracy</b></li>
+  <li><b>User-friendly web interface built using Flask</b></li>
+  <li><b>Fast and reliable disease prediction results</b></li>
+</ul>
 
 
