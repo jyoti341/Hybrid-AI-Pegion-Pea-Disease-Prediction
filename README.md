@@ -24,5 +24,15 @@ Users can upload leaf images and get instant disease predictions along with usef
   <li><b>User-friendly web interface built using Flask</b></li>
   <li><b>Fast and reliable disease prediction results</b></li>
 </ul>
+<h2>🛠 Technologies Used</h2>
+
+<ul>
+  <li><b>Programming Language:</b> Python</li>
+  <li><b>Web Framework:</b> Flask</li>
+  <li><b>Machine Learning:</b> Support Vector Machine (SVM), PCA</li>
+  <li><b>Image Processing:</b> OpenCV</li>
+  <li><b>Libraries:</b> NumPy, Pandas, Scikit-learn</li>
+  <li><b>Frontend:</b> HTML, CSS</li>
+</ul>
 
 
