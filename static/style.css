@@ -1,0 +1,195 @@
+/* === Page Background === */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #e8f5e9; /* light green background */
+}
+
+/* === Header === */
+header {
+  background-color: #2e7d32; /* dark green header bar */
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 42px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Hero Section === */
+.hero {
+  padding: 40px 0 60px;
+  background: linear-gradient(90deg, #2e7d32 0%, #2e7d32 100%); /* dark green hero */
+  color: #fff;
+}
+
+.hero .container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+
+.hero-left {
+  flex: 1 1 50%;
+  color: #fff;
+}
+
+.hero-left h2 {
+  font-size: 38px;
+  margin: 0 0 12px;
+  color: #ffffff; /* stronger white for contrast */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.hero-left p {
+  font-size: 16px;
+  margin: 0 0 20px;
+  color: #f7fff7; /* light but readable */
+}
+
+.hero-right {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 420px;
+  height: 220px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#4caf50 0%, #2e7d32 100%);
+  box-shadow: 0 8px 24px rgba(46,125,50,0.25);
+}
+
+.hero-img {
+  width: 420px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  display: block;
+}
+
+/* === How it works / cards === */
+.steps {
+  padding: 60px 0 80px;
+  background: #fff;
+}
+
+.steps h3 {
+  text-align: center;
+  font-size: 28px;
+  margin: 0 0 30px;
+  color: #333;
+}
+
+.cards {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 1 30%;
+  background: transparent;
+  text-align: center;
+  padding: 20px 16px;
+}
+
+.card-icon {
+  font-size: 32px;
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.card h4 {
+  margin: 6px 0 8px;
+  color: #2e7d32;
+}
+
+.card p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Button accent on hero to look like screenshot */
+.btn {
+  background-color: #2e7d32;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background-color: #256428;
+}
+
+@media (max-width: 800px) {
+  .hero .container { flex-direction: column; }
+  .hero-image { width: 100%; height: 200px; }
+  .cards { flex-direction: column; }
+  .card { width: 100%; }
+}
+
+/* === Upload Section === */
+.upload-section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 400px;
+  margin: 100px auto;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section h2 {
+  color: #2e7d32;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* === Buttons === */
+.btn {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2e7d32;
+}

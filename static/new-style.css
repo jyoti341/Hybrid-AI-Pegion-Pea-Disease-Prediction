@@ -1,0 +1,188 @@
+/* === Page Background === */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #e8f5e9;
+}
+
+/* === Header === */
+header {
+  background-color: #2e7d32;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 42px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Hero Section === */
+.hero {
+  padding: 60px 0;
+  background-color: #2e7d32;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.hero-left h2 {
+  font-size: 42px;
+  margin: 0 0 20px;
+  line-height: 1.2;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.hero-left p {
+  font-size: 18px;
+  margin: 0 0 30px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-right {
+  flex: 1;
+  min-height: 400px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
+}
+
+/* === How it Works === */
+.steps {
+  padding: 60px 0;
+  background: white;
+}
+
+.steps h3 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #2e7d32;
+}
+
+.cards {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  flex: 1;
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 40px;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.card h4 {
+  font-size: 20px;
+  margin: 0 0 15px;
+  color: #2e7d32;
+}
+
+.card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* === Button === */
+.btn {
+  display: inline-block;
+  background-color: #388e3c;
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2e7d32;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column;
+  }
+  
+  .hero-right {
+    width: 100%;
+    min-height: 300px;
+  }
+  
+  .cards {
+    flex-direction: column;
+  }
+}
