@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pigeon Pea Crop Disease Detection | Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background-color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #2B7A0B;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+        .hero {
+            background-color: #2B7A0B;
+            color: white;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .hero-image-container {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 380px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(43, 122, 11, 0.3);
+            background: #fff;
+            border: 1px solid rgba(43, 122, 11, 0.2);
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(43, 122, 11, 0.1),
+                rgba(43, 122, 11, 0.05)
+            );
+        }
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(43, 122, 11, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(43, 122, 11, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            mask-image: radial-gradient(circle at center, transparent 30%, black 70%);
+        }
+        .analysis-points::before,
+        .analysis-points::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid rgba(43, 122, 11, 0.8);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .analysis-points::before {
+            top: 30%;
+            left: 25%;
+        }
+        .analysis-points::after {
+            bottom: 40%;
+            right: 35%;
+        }
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(43, 122, 11, 0.8),
+                rgba(255, 255, 255, 0.9),
+                rgba(43, 122, 11, 0.8),
+                transparent
+            );
+            animation: scan 3s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(43, 122, 11, 0.6);
+        }
+        @keyframes scan {
+            0% {
+                top: -10%;
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+        .detect-btn {
+            background-color: white;
+            color: #2B7A0B;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .detect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(43, 122, 11, 0.2);
+        }
+        /* healthy-trees section removed */
+        .features {
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+        .features h2 {
+            text-align: center;
+            color: #2B7A0B;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .features h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #2B7A0B;
+            border-radius: 2px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(43, 122, 11, 0.1);
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #2B7A0B, #4CAF50);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(43, 122, 11, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+        .feature-card h3 {
+            color: #2B7A0B;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">🌿 Pigeon Pea Crop</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/detect">Disease Detection</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Protect Your Pigeon Pea Crops with AI</h1>
+            <p>Upload a photo of your plant leaves and get instant disease diagnosis with treatment recommendations.</p>
+            <a href="/detect" class="detect-btn">Detect Disease Now</a>
+        </div>
+        <div class="hero-image-container">
+            <img src="{{ url_for('static', filename='uploads/main image.jpg') }}" alt="Pigeon Pea Plant Analysis" class="hero-image">
+            <div class="hero-overlay">
+                <div class="tech-grid"></div>
+                <div class="analysis-points"></div>
+                <div class="scan-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Advanced Disease Detection Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>High Accuracy</h3>
+                <p>Advanced AI model trained on thousands of pigeon pea leaf images for accurate disease detection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Results</h3>
+                <p>Get disease diagnosis and treatment recommendations within seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Multiple Diseases</h3>
+                <p>Detects various diseases including Leaf Spot, Leaf Webber, and Sterility Mosaic.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Easy to Use</h3>
+                <p>Simply upload a photo from your phone or camera to start the analysis.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

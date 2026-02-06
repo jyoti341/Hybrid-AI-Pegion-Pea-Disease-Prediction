@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Disease Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>CropGuard</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/detect">Disease Detection</a>
+    </nav>
+  </header>
+
+  <section class="upload-section">
+    <h2>Upload Crop Leaf Image</h2>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" required><br><br>
+      <button type="submit" class="btn">Predict Disease</button>
+    </form>
+  </section>
+</body>
+</html>

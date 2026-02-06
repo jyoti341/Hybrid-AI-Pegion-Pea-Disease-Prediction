@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8f7; margin:0; }
+    .result-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; }
+    .result-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); max-width:720px; width:90%; text-align:center; }
+    .result-card h1 { margin-bottom: 8px; color:#2B7A0B; }
+    .result-card p { color:#444; margin: 6px 0 18px; }
+    .result-image { max-width:320px; width:100%; height:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .confidence { margin-top:18px; font-size:1.15rem; font-weight:700; color:#fff; background: linear-gradient(90deg,#34a853,#2B7A0B); display:inline-block; padding:8px 18px; border-radius:999px; }
+    .progress { width:100%; background:#e6eee6; border-radius:999px; height:14px; margin-top:14px; overflow:hidden; }
+    .progress-fill { height:100%; background:linear-gradient(90deg,#34a853,#86c77b); width:0%; transition: width 700ms ease; }
+    .actions { margin-top:20px; }
+    .btn { display:inline-block; padding:10px 18px; background:#2B7A0B; color:#fff; text-decoration:none; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="result-wrap">
+    <div class="result-card">
+      <h1>Detection Result</h1>
+      <p class="lead">{{ result }}</p>
+
+      {% if image_url %}
+        <img src="{{ image_url }}" alt="Uploaded" class="result-image">
+      {% endif %}
+
+      <div>
+        <div class="confidence">Confidence: {{ confidence }}%</div>
+        <div class="progress" aria-hidden="true">
+          <div id="progressFill" class="progress-fill" style="width: {{ confidence }}%;"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="/detect" class="btn">Analyze Another Image</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small JS to animate the progress fill if needed (already set inline width)
+    (function(){
+      var el = document.getElementById('progressFill');
+      if(!el) return;
+      var w = el.style.width;
+      el.style.width = '0%';
+      setTimeout(function(){ el.style.width = w; }, 120);
+    })();
+  </script>
+</body>
+</html>
